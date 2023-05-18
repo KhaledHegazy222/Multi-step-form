@@ -6,26 +6,26 @@ const addOnsList = [
   {
     title: "Online service",
     details: "Access to multiplayer games",
-    monthlyCost: "+$1/mo",
-    yearlyCost: "+$10/yr",
+    monthlyPrice: 1,
+    yearlyPrice: 10,
   },
   {
     title: "Larger storage",
     details: "Extra 1TB of cloud save",
-    monthlyCost: "+$2/mo",
-    yearlyCost: "+$20/yr",
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
   {
     title: "Customizable profile",
     details: "Custom theme on your profile",
-    monthlyCost: "+$2/mo",
-    yearlyCost: "+$20/yr",
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
 ];
 
 const AddOns = ({ prevPage, nextPage }) => {
   const { data, setData } = useData();
-  const [addOns, setAddOns] = useState([]);
+  const [addOns, setAddOns] = useState(data.addOns || []);
   const toggleAddOn = (addOn) => {
     const index = addOns.findIndex((element) => element.title === addOn.title);
     if (index === -1) {
@@ -74,15 +74,23 @@ const AddOns = ({ prevPage, nextPage }) => {
                     <h3>{addOn.title}</h3>
                     <p>{addOn.details}</p>
                   </div>
-                  <p>{addOn.monthlyCost}</p>
+                  <p>
+                    {data.subscription === "monthly"
+                      ? `$${addOn.monthlyPrice}/mo`
+                      : `$${addOn.yearlyPrice}/yr`}
+                  </p>
                 </li>
               );
             })}
           </ul>
         </div>
         <div className={style.twoNavigateButtons}>
-          <Button onClick={prevPage}>Go Back</Button>
-          <Button onClick={handleNavigate}>Next Step</Button>
+          <button className={style.prevButton} onClick={prevPage}>
+            Go Back
+          </button>
+          <button className={style.nextButton} onClick={handleNavigate}>
+            Next Step
+          </button>
         </div>
       </section>
     </>

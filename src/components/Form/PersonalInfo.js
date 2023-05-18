@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import style from "./Form.module.css";
-import InputField from "../InputField";
+
 import { useData } from "../../context/DataProvider";
+import { Form } from "react-bootstrap";
 const PersonalInfo = ({ nextPage }) => {
   const { data, setData } = useData();
   const nameRef = useRef(data.name);
@@ -31,21 +32,36 @@ const PersonalInfo = ({ nextPage }) => {
           <ul>
             <li className={style.questionContainer}>
               <label>Name</label>
-              <InputField ref={nameRef} placeholder="e.g Stephen King" />
+
+              <Form.Control
+                type="text"
+                placeholder="e.g Stephen King"
+                ref={nameRef}
+                required={true}
+                defaultValue={data.name}
+              />
             </li>
             <li className={style.questionContainer}>
               <label>Email Address</label>
-              <InputField
-                ref={emailRef}
+
+              <Form.Control
+                type="text"
                 placeholder="e.g stephenking@lorem.com"
+                ref={emailRef}
+                required={true}
+                defaultValue={data.email}
               />
             </li>
 
             <li className={style.questionContainer}>
               <label>Phone Number</label>
-              <InputField
-                ref={phoneNumberRef}
+
+              <Form.Control
+                type="text"
                 placeholder="e.g +1 234 567 890"
+                ref={phoneNumberRef}
+                required={true}
+                defaultValue={data.phoneNumber}
               />
             </li>
           </ul>

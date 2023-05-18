@@ -48,10 +48,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  background-color: blue;
+  background-color: var(--marine-blue);
   border: none;
   border-radius: 10px;
   color: white;
@@ -145,7 +145,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  border: 1px solid gray;
+  border: 1px solid var(--cool-gray);
   border-radius: 10px;
   padding: 20px;
   gap: 40px;
@@ -153,7 +153,7 @@
 }
 .sectionBody .planList > li.active {
   border-color: var(--purplish-blue);
-  background-color: var(--alabaster);
+  background-color: var(--magnolia);
 }
 .sectionBody .planList > li h3 {
   font-size: 1.1rem;
@@ -162,6 +162,9 @@
 .sectionBody .planList > li p {
   font-size: 0.9rem;
   color: var(--cool-gray);
+}
+.sectionBody .planList > li p.freeText {
+  color: var(--marine-blue);
 }
 
 .sectionBody .monthlyYearlySelect {
@@ -249,6 +252,9 @@
   font-size: 0.9rem;
   color: var(--cool-gray);
 }
+.summaryPlan > div > p:hover {
+  color: var(--purplish-blue);
+}
 
 .summaryPlan > h3 {
   font-size: 1rem;
@@ -294,6 +300,20 @@
   font-weight: 700;
 }
 
+.confirmButton {
+  height: 50px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--purplish-blue);
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
 .thankYouContainer {
   flex: 1;
   display: flex;

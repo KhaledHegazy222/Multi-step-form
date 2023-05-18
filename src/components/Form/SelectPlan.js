@@ -9,32 +9,35 @@ import proIcon from "../../assets/images/icon-pro.svg";
 const plans = [
   {
     name: "Arcade",
-    monthlyPrice: "$9/mo",
-    yearlyPrice: "20$/yr",
+    monthlyPrice: 9,
+    yearlyPrice: 20,
     image: arcadeIcon,
   },
   {
     name: "Advanced",
-    monthlyPrice: "$9/mo",
-    yearlyPrice: "20$/yr",
+    monthlyPrice: 9,
+    yearlyPrice: 20,
     image: advancedIcon,
   },
   {
     name: "Pro",
-    monthlyPrice: "$9/mo",
-    yearlyPrice: "20$/yr",
+    monthlyPrice: 9,
+    yearlyPrice: 20,
     image: proIcon,
   },
 ];
 
 const SelectPlan = ({ nextPage, prevPage }) => {
   const { data, setData } = useData();
-  const [monthly, setMonthly] = useState(true);
-  const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+  const [monthly, setMonthly] = useState(
+    data.subscription === undefined ? true : data.subscription === "monthly"
+  );
+  const [selectedPlan, setSelectedPlan] = useState(data.plan || plans[0]);
 
   const handlePlanChange = (plan) => {
     setSelectedPlan(plan);
   };
+
   const handleNavigate = () => {
     setData((prevData) => {
       return {
@@ -66,19 +69,27 @@ const SelectPlan = ({ nextPage, prevPage }) => {
                 <img src={plan.image} alt={plan.name} />
                 <div>
                   <h3>{plan.name}</h3>
-                  <p>{plan.monthlyPrice}</p>
+                  <p>
+                    {monthly
+                      ? `$${plan.monthlyPrice}/mo`
+                      : `$${plan.yearlyPrice}/yr`}
+                  </p>
+                  {!monthly && <p className={style.freeText}>2 months free</p>}
                 </div>
               </li>
             ))}
           </ul>
           <div className={style.monthlyYearlySelect}>
             <h3 className={(monthly && style.active).toString()}>Monthly</h3>
-            <Form.Check
-              type="switch"
-              onChange={() => {
-                setMonthly((prev) => !prev);
-              }}
-            />
+            <div>
+              <Form.Check
+                type="switch"
+                onChange={() => {
+                  setMonthly((prev) => !prev);
+                }}
+                defaultChecked={data.subscription === "yearly"}
+              />
+            </div>
             <h3 className={(!monthly && style.active).toString()}>Yearly</h3>
           </div>
         </div>
