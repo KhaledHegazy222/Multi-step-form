@@ -1,0 +1,48 @@
+.navigationBody {
+  align-self: stretch;
+  background-image: url("../../assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+  width: 270px;
+  height: 600px;
+  border-radius: inherit;
+  background-repeat: no-repeat;
+  padding: 15px;
+  text-transform: uppercase;
+}
+.navigationBody > ul {
+  list-style: none;
+}
+
+.navigationBody > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 23px;
+}
+
+.navigationBody > ul > li > .stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+
+  color: var(--white);
+  aspect-ratio: 1 / 1;
+  width: 33px;
+  border-radius: 50%;
+}
+
+.navigationBody > ul > li.active > .stepNumber {
+  background-color: var(--light-blue);
+  color: var(--marine-blue);
+}
+
+.navigationBody > ul > li p {
+  font-size: 0.8rem;
+  color: var(--cool-gray);
+  font-weight: 300;
+}
+.navigationBody > ul > li h2 {
+  font-size: 0.9rem;
+  color: white;
+}

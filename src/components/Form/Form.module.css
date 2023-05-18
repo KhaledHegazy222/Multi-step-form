@@ -1,0 +1,307 @@
+/********************** Layout & General Style **********************/
+
+.sectionBody {
+  padding: 30px 70px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.sectionBody > * {
+  flex: 0;
+}
+.sectionBody > header > h1 {
+  font-size: 2.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--marine-blue);
+}
+
+.sectionBody > header > p {
+  font-size: 1rem;
+  color: var(--cool-gray);
+  font-weight: 400;
+}
+.sectionBody > .sectionContent {
+  flex: 1;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.sectionBody > .twoNavigateButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionBody > .twoNavigateButtons > .prevButton {
+  border: none;
+  background-color: transparent;
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.sectionBody > .twoNavigateButtons > .nextButton {
+  height: 50px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: blue;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+/********************** Personal Info Page **********************/
+
+.sectionBody > form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sectionBody > form > ul {
+  list-style: none;
+}
+.questionContainer {
+  margin: 25px 0;
+}
+
+.questionContainer > * {
+  display: block;
+  width: 100%;
+}
+
+.questionContainer > label {
+  font-size: 0.9rem;
+}
+
+.questionContainer > input {
+  border-radius: 10px;
+  border: 1px solid rgb(212, 212, 212);
+
+  outline: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 15px;
+  margin: 10px 0;
+}
+.questionContainer ::placeholder {
+  color: var(--cool-gray);
+  font-weight: 500;
+  opacity: 1; /* Firefox */
+}
+
+.questionContainer :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.questionContainer ::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.sectionBody > form > button {
+  align-self: flex-end;
+  height: 50px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  background-color: var(--marine-blue);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  /* margin-top: 60px; */
+}
+
+/********************** Select Plan Page **********************/
+
+.sectionBody .planList {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.sectionBody .planList > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 40px;
+  width: 30%;
+}
+
+.sectionBody .planList > li h3 {
+  font-size: 1.1rem;
+  color: var(--marine-blue);
+}
+.sectionBody .planList > li p {
+  font-size: 0.9rem;
+  color: var(--cool-gray);
+}
+
+.sectionBody .monthlyYearlySelect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: var(--magnolia);
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.monthlyYearlySelect > h3 {
+  font-size: 1.1rem;
+  color: var(--cool-gray);
+}
+.monthlyYearlySelect > h3.active {
+  color: var(--marine-blue);
+}
+
+/********************** Add-ons Page **********************/
+.sectionBody > .addOnsList {
+  list-style: none;
+}
+
+.sectionBody .addOnsList > li {
+  border: 1px solid var(--cool-gray);
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 17px;
+}
+
+.sectionBody .addOnsList > li > * {
+  flex-shrink: 0;
+}
+.sectionBody .addOnsList > li > div {
+  flex: 1;
+}
+
+.addOnsList > li > div > h3 {
+  margin: 5px 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.addOnsList > li > div > p {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.addOnsList > li > p {
+  color: var(--purplish-blue);
+}
+
+/********************** Summary Page **********************/
+
+.summaryBody {
+  padding: 20px;
+  background-color: var(--magnolia);
+}
+
+.summaryPlan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  margin-bottom: 20px;
+}
+.summaryPlan > div > h3 {
+  font-size: 1.2rem;
+  color: var(--marine-blue);
+}
+.summaryPlan > div > p {
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--cool-gray);
+}
+
+.summaryPlan > h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--marine-blue);
+}
+
+.summaryAddOnsList {
+  list-style-type: none;
+}
+
+.summaryAddOnsList > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.summaryAddOnsList .addOnTitle {
+  color: var(--cool-gray);
+  font-size: 0.9rem;
+}
+.summaryAddOnsList .addOnPrice {
+  color: black;
+  font-size: 0.9rem;
+}
+
+.summaryTotal {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summaryTotal > p {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.summaryTotal > h3 {
+  font-size: 1.3rem;
+  color: var(--purplish-blue);
+  font-weight: 700;
+}
+
+.thankYouContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thankYouContainer > img {
+  margin-bottom: 10px;
+}
+
+.thankYouContainer > h1 {
+  color: var(--marine-blue);
+  font-size: 2.1rem;
+  margin: 10px;
+  font-weight: 600;
+}
+
+.thankYouContainer > p {
+  color: var(--cool-gray);
+  text-align: center;
+}

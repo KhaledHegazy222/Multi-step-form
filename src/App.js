@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import Navigation from "./components/Navigation";
+import Form from "./components/Form";
 
 function App() {
+  const [pageNumber, setPageNumber] = useState(0);
+  const nextPage = () => {
+    setPageNumber((prevNumber) => prevNumber + 1);
+  };
+  const prevPage = () => {
+    setPageNumber((prevNumber) => prevNumber - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page-container">
+      <main className="form-body">
+        <Navigation pageNumber={pageNumber} />
+        <Form pageNumber={pageNumber} nextPage={nextPage} prevPage={prevPage} />
+      </main>
     </div>
   );
 }
