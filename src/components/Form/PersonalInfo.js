@@ -1,13 +1,23 @@
 import React, { useRef } from "react";
 import style from "./Form.module.css";
 import InputField from "../InputField";
-
+import { useData } from "../../context/DataProvider";
 const PersonalInfo = ({ nextPage }) => {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const phoneNumberRef = useRef();
+  const { data, setData } = useData();
+  const nameRef = useRef(data.name);
+  const emailRef = useRef(data.email);
+  const phoneNumberRef = useRef(data.phoneNumber);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const submitData = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      phoneNumber: phoneNumberRef.current.value,
+    };
+    setData((prevState) => {
+      return { ...prevState, ...submitData };
+    });
     nextPage();
   };
   return (

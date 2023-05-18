@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Form.module.css";
 import { Form, Button } from "react-bootstrap";
-
+import { useData } from "../../context/DataProvider";
 const addOnsList = [
   {
     title: "Online service",
@@ -24,6 +24,27 @@ const addOnsList = [
 ];
 
 const AddOns = ({ prevPage, nextPage }) => {
+  const { data, setData } = useData();
+  const [addOns, setAddOns] = useState([]);
+  const toggleAddOn = (addOn) => {
+    const index = addOns.findIndex((element) => element.title === addOn.title);
+    if (index === -1) {
+      setAddOns((prevList) => [...prevList, addOn]);
+    } else {
+      setAddOns((prevList) => {
+        const listCopy = [...prevList];
+        listCopy.splice(index, 1);
+        return listCopy;
+      });
+    }
+  };
+
+  const handleNavigate = () => {
+    setData((prevData) => {
+      return { ...prevData, addOns };
+    });
+    nextPage();
+  };
   return (
     <>
       <section className={style.sectionBody}>
@@ -33,23 +54,35 @@ const AddOns = ({ prevPage, nextPage }) => {
         </header>
         <div className={style.sectionContent}>
           <ul className={style.addOnsList}>
-            {addOnsList.map((addOn, index) => (
-              <li key={index}>
-                <Form>
-                  <Form.Check type="checkbox" />
-                </Form>
-                <div>
-                  <h3>{addOn.title}</h3>
-                  <p>{addOn.details}</p>
-                </div>
-                <p>{addOn.monthlyCost}</p>
-              </li>
-            ))}
+            {addOnsList.map((addOn, index) => {
+              const checked =
+                addOns.findIndex((element) => element.title === addOn.title) !==
+                -1;
+              return (
+                <li
+                  key={index}
+                  onClick={() => {
+                    toggleAddOn(addOn);
+                  }}
+                  className={(checked && style.active).toString()}
+                >
+                  <article>
+                    <Form.Check type="checkbox" checked={checked} readOnly />
+                  </article>
+
+                  <div>
+                    <h3>{addOn.title}</h3>
+                    <p>{addOn.details}</p>
+                  </div>
+                  <p>{addOn.monthlyCost}</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className={style.twoNavigateButtons}>
           <Button onClick={prevPage}>Go Back</Button>
-          <Button onClick={nextPage}>Next Step</Button>
+          <Button onClick={handleNavigate}>Next Step</Button>
         </div>
       </section>
     </>

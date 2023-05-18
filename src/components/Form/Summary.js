@@ -2,7 +2,10 @@ import { useState } from "react";
 import style from "./Form.module.css";
 import { Button } from "react-bootstrap";
 import thankYouImage from "../../assets/images/icon-thank-you.svg";
+import { useData } from "../../context/DataProvider";
+
 const Summary = ({ prevPage }) => {
+  const { data, setData } = useData();
   const [confirmed, setConfirmed] = useState(false);
   return (
     <section className={style.sectionBody}>
@@ -30,7 +33,7 @@ const Summary = ({ prevPage }) => {
             <div className={style.summaryBody}>
               <div className={style.summaryPlan}>
                 <div>
-                  <h3>Arcade (Monthly)</h3>
+                  <h3>{data.plan.name}</h3>
                   <p
                     onClick={() => {
                       prevPage();
@@ -43,14 +46,12 @@ const Summary = ({ prevPage }) => {
                 <h3>$9/mo</h3>
               </div>
               <ul className={style.summaryAddOnsList}>
-                <li>
-                  <p className={style.addOnTitle}>Online service</p>
-                  <p className={style.addOnPrice}>+$1/mo</p>
-                </li>
-                <li>
-                  <p className={style.addOnTitle}>Larger storage</p>
-                  <p className={style.addOnPrice}>+$1/mo</p>
-                </li>
+                {data.addOns.map((addOn, index) => (
+                  <li key={index}>
+                    <p className={style.addOnTitle}>{addOn.title}</p>
+                    <p className={style.addOnPrice}>{addOn.monthlyCost}</p>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className={style.summaryTotal}>
